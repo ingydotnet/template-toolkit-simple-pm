@@ -1,0 +1,21 @@
+---
+version: 0.04
+date:    Fri Nov  7 14:44:23 PST 2008
+changes:
+- Support start_tag and end_tag.
+---
+version: 0.03
+date:    Mon Oct 27 17:02:25 PDT 2008
+changes:
+- Make api tt->(template, data, output); # added output.
+---
+version: 0.02
+date:    Sat Oct 25 17:47:04 PDT 2008
+changes:
+- Make all TT options work.
+- Support path//template shorcut syntax.
+---
+version: 0.01
+date:    Fri Sep 26 01:40:13 PDT 2008
+changes:
+- First Release
