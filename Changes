@@ -1,4 +1,10 @@
 ---
+version: 0.05
+date:    Sun Apr 26 19:06:13 PDT 2009
+changes:
+- Add usage text for command line help.
+- Fixed utf8 encoding. Hopefully.
+---
 version: 0.04
 date:    Fri Nov  7 14:44:23 PST 2008
 changes:

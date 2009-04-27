@@ -3,10 +3,11 @@ use Template::Constants qw( :debug );
 use strict;
 use warnings;
 
-our $VERSION = '[% version %]';
+our $VERSION = '0.05';
 
 use Template;
 use Getopt::Long;
+use Encode;
 
 use base 'Exporter';
 our @EXPORT = qw(tt);
@@ -108,6 +109,7 @@ sub render {
     my $output = '';
     $self->process($template, $self->{data}, \$output)
         or $self->croak;
+    return Encode::encode('UTF-8', $output);
     return $output;
 }
 
@@ -160,6 +162,12 @@ sub process {
         COMPILE_EXT         => $self->{compile_ext},
         COMPILE_DIR         => $self->{compile_dir},
     );
+
+    no warnings 'redefine';
+    local *Template::Provider::_decode_unicode = sub {
+        use bytes;
+        return Encode::decode('UTF-8', $_[1]);
+    };
 
     return $self->{tt}->process(@_);
 }
@@ -243,7 +251,7 @@ sub _run_command {
 
 =head1 NAME
 
-Template::Toolkit::Simple - [% abstract %]
+Template::Toolkit::Simple - A Simple Interface to Template Toolkit
 
 =head1 SYNOPSIS
 
@@ -409,9 +417,9 @@ string containing multiple directories separated by ':'.
 This is a shorter name for C<include_path>. It does the exact
 same thing.
 
-=item start_tag() -- Default is '[% '[' _ '%' %]'
+=item start_tag() -- Default is '[%'
 
-=item end_tag() -- Default is '[% '%' _ ']' %]'
+=item end_tag() -- Default is '%]'
 
 =item tag_style() -- Default is 'template'
 
@@ -465,5 +473,19 @@ method returns the error message on a failure.
 
 =back
 
-[% PROCESS 'pod-footer' %]
+=encoding utf8
+
+=head1 AUTHOR
+
+Ingy döt Net <ingy@cpan.org>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2009. Ingy döt Net.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See http://www.perl.com/perl/misc/Artistic.html
+
 =cut
