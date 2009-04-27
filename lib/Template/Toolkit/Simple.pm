@@ -111,6 +111,15 @@ sub render {
     return $output;
 }
 
+sub usage {
+    return <<'...'
+Usage:
+
+    tt-render --path=path/to/templates/ --data=data.yaml foo.tt2
+
+...
+}
+
 sub croak {
     my $self = shift;
     require Carp;
