@@ -7,7 +7,6 @@ our $VERSION = '0.05';
 
 use Template;
 use Getopt::Long;
-use Encode;
 
 use base 'Exporter';
 our @EXPORT = qw(tt);
@@ -109,7 +108,6 @@ sub render {
     my $output = '';
     $self->process($template, $self->{data}, \$output)
         or $self->croak;
-    return Encode::encode('UTF-8', $output);
     return $output;
 }
 
@@ -162,12 +160,6 @@ sub process {
         COMPILE_EXT         => $self->{compile_ext},
         COMPILE_DIR         => $self->{compile_dir},
     );
-
-    no warnings 'redefine';
-    local *Template::Provider::_decode_unicode = sub {
-        use bytes;
-        return Encode::decode('UTF-8', $_[1]);
-    };
 
     return $self->{tt}->process(@_);
 }
