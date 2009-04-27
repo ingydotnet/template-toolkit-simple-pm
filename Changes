@@ -1,4 +1,9 @@
 ---
+version: 0.06
+date:    Mon Apr 27 16:57:55 PDT 2009
+changes:
+- Encode stuff was a mistake. Reverting.
+---
 version: 0.05
 date:    Sun Apr 26 19:06:13 PDT 2009
 changes:
