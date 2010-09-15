@@ -7,5 +7,6 @@ manifest_skip;
 requires 'Template' => '0';
 install_script 'bin/tt-render';
 use_test_base;
+ack_xxx;
 
 WriteAll;
