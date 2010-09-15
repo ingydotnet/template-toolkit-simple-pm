@@ -1,4 +1,10 @@
 ---
+version: 0.08
+date:    Wed Sep 15 00:08:41 PDT 2010
+changes:
+- Remove old Test::Base subclass
+- Update copyright dates
+---
 version: 0.07
 date:    Tue Sep 14 23:06:07 PDT 2010
 changes:
