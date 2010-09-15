@@ -1,199 +1,192 @@
-Template::Toolkit::SimpUlsee(r3)Contributed Perl DocumenTteamtpiloante::Toolkit::Simple(3)
+NAME
+    Template::Toolkit::Simple - A Simple Interface to Template Toolkit
 
+SYNOPSIS
+        use Template::Toolkit::Simple;
 
+        print tt
+            ->path(['./', 'template/'])
+            ->data('values.yaml')
+            ->post_chomp
+            ->render('foo.tt');
 
-NNAAMMEE
-       Template::Toolkit::Simple − A Simple Interface to Template Toolkit
+    or from the command line:
 
-SSYYNNOOPPSSIISS
-           use Template::Toolkit::Simple;
+        tt-render --path=./:template/ --data=values.yaml --post-chomp foo.tt
 
-           print tt
-               −>path(['./', 'template/'])
-               −>data('values.yaml')
-               −>post_chomp
-               −>render('foo.tt');
+DESCRIPTION
+    Template Toolkit is the best Perl template framework. The only problem
+    with it is that using it for simple stuff is a little bit cumbersome.
+    Also there is no good utility for using it from the command line.
 
-       or from the command line:
+    This module is a simple wrapper around Template Toolkit. It exports a
+    function called "tt" which returns a new Template::Toolkit::Simple
+    object. The object supports method calls for setting all the Template
+    Toolkit options.
 
-           tt−render −−path=./:template/ −−data=values.yaml −−post−chomp foo.tt
+    This module also installs a program called "tt-render" which you can use
+    from the command line to render templates with all the power of the Perl
+    object. All of the object methods become command line arguments in the
+    command line version.
 
-DDEESSCCRRIIPPTTIIOONN
-       Template Toolkit is the best Perl template framework. The only problem
-       with it is that using it for simple stuff is a little bit cumbersome.
-       Also there is no good utility for using it from the command line.
+COMMAND LINE USAGE
+    This command renders the named file and prints the output to STDOUT. If
+    an error occurs, it is printed to STDERR.
 
-       This module is a simple wrapper around Template Toolkit. It exports a
-       function called "tt" which returns a new Template::Toolkit::Simple
-       object. The object supports method calls for setting all the Template
-       Toolkit options.
+        tt-render [template-options] file-name
 
-       This module also installs a program called "tt−render" which you can
-       use from the command line to render templates with all the power of the
-       Perl object. All of the object methods become command line arguments in
-       the command line version.
+TEMPLATE NAME
+    When using Template::Toolkit::Simple or "tt-render), the most common
+    parameters you will use are the main template file name and the
+    directory of supporting templates. As a convenience, you can specify
+    these together."
 
-CCOOMMMMAANNDD LLIINNEE UUSSAAGGEE
-       This command renders the named file and prints the output to STDOUT. If
-       an error occurs, it is printed to STDERR.
+    This:
 
-           tt−render [template−options] file−name
+        tt->render('foo//bar/baz.tt');
+        > tt-render foo//bar/baz.tt  # command line version
 
-TTEEMMPPLLAATTEE NNAAMMEE
-       When using Template::Toolkit::Simple or "tt−render), the most common
-       parameters you will use are the main template file name and the
-       directory of supporting templates. As a convenience, you can specify
-       these together."
+    is the same as:
 
-       This:
+        tt->include_path('foo/')->render('bar/baz.tt');
+        > tt-render --include_path=foo/ bar/baz.tt  # command line version
 
-           tt−>render('foo//bar/baz.tt');
-           > tt−render foo//bar/baz.tt  # command line version
+    Use a double slash to separate the path from the template. This is handy
+    because tab completion should work after you specify the '//'.
 
-       is the same as:
+EXPORTED SUBROUTINES
+    tt  Simply returns a new Template::Toolkit::Simple object. This is
+        Simple sugar for:
 
-           tt−>include_path('foo/')−>render('bar/baz.tt');
-           > tt−render −−include_path=foo/ bar/baz.tt  # command line version
+            Template::Toolkit::Simple->new();
 
-       Use a double slash to separate the path from the template. This is
-       handy because tab completion should work after you specify the ’//’.
+        It takes no parameters.
 
-EEXXPPOORRTTEEDD SSUUBBRROOUUTTIINNEESS
-       tt  Simply returns a new Template::Toolkit::Simple object. This is
-           Simple sugar for:
+METHODS
+    This section describes the methods that are not option setting methods.
+    Those methods are described below.
 
-               Template::Toolkit::Simple−>new();
+    new()
+        Return a new Template::Toolkit::Simple object. Takes no parameters.
 
-           It takes no parameters.
+    render($template, $data);
+        This is the method that actually renders the template. It is similar
+        to the Template Toolkit "process" method, except that it actually
+        returns the template result as a string. It returns undef if an
+        error occurs.
 
-MMEETTHHOODDSS
-       This section describes the methods that are not option setting methods.
-       Those methods are described below.
+        The $data field is optional and can be set with the "data" method.
 
-       _n_e_w_(_)
-           Return a new Template::Toolkit::Simple object. Takes no parameters.
+        If you need more control, see the process comand below:
 
-       render($template, $data);
-           This is the method that actually renders the template. It is
-           similar to the Template Toolkit "process" method, except that it
-           actually returns the template result as a string. It returns undef
-           if an error occurs.
+    process($template, $data, $output, %options);
+        This command is simply a proxy to the Template Toolkit "process"
+        command. All the parameters you give it are passed to the real
+        "process" command and the result is returned. See Template for more
+        information.
 
-           The $data field is optional and can be set with the "data" method.
+    output($filepath)
+        Specify a filepath to print the template result to.
 
-           If you need more control, see the process comand below:
+    error()
+        This method is a proxy to the Template Toolkit "error" method. It
+        returns the error message if there was an error.
 
-       process($template, $data, $output, %options);
-           This command is simply a proxy to the Template Toolkit "process"
-           command. All the parameters you give it are passed to the real
-           "process" command and the result is returned. See Template for more
-           information.
+OPTION METHODS
+    All of the Template Toolkit options are available as methods to
+    Template::Toolkit::Simple objects, and also as command line options to
+    the "tt-render" command.
 
-       output($filepath)
-           Specify a filepath to print the template result to.
+    For example, the "POST_CHOMP" options is available in the following
+    ways:
 
-       _e_r_r_o_r_(_)
-           This method is a proxy to the Template Toolkit "error" method. It
-           returns the error message if there was an error.
+        tt->post_chomp      # turn POST_CHOMP on
+        tt->post_chomp(1)   # turn POST_CHOMP on
+        tt->post_chomp(0)   # turn POST_CHOMP off
 
-OOPPTTIIOONN MMEETTHHOODDSS
-       All of the Template Toolkit options are available as methods to
-       Template::Toolkit::Simple objects, and also as command line options to
-       the "tt−render" command.
+        --post_chomp        # turn POST_CHOMP on
+        --post-chomp        # same. use - instead of _
+        --post_chomp=1      # turn POST_CHOMP on
+        --post_chomp=0      # turn POST_CHOMP off
 
-       For example, the "POST_CHOMP" options is available in the following
-       ways:
+    If the method functionality is not explained below, please refer to
+    Template.
 
-           tt−>post_chomp      # turn POST_CHOMP on
-           tt−>post_chomp(1)   # turn POST_CHOMP on
-           tt−>post_chomp(0)   # turn POST_CHOMP off
+    config($file_name || $hash)
+        If you have a common set of Template Toolkit options stored in a
+        file, you can use this method to read and parse the file, and set
+        the appropriate options.
 
-           −−post_chomp        # turn POST_CHOMP on
-           −−post−chomp        # same. use − instead of _
-           −−post_chomp=1      # turn POST_CHOMP on
-           −−post_chomp=0      # turn POST_CHOMP off
+        The currently supported file formats are YAML, JSON and XML. The
+        format is determined by the file extension, so use the appropriate
+        one. Note the XML::Simple is used to parse XML files.
 
-       If the method functionality is not explained below, please refer to
-       Template.
+    data($file_name || $hash)
+        Most templates use a hash object of data to access values while
+        rendering. You can specify this data in a file or with a hash
+        reference.
 
-       config($file_name || $hash)
-           If you have a common set of Template Toolkit options stored in a
-           file, you can use this method to read and parse the file, and set
-           the appropriate options.
+        The currently supported file formats are YAML, JSON and XML. The
+        format is determined by the file extension, so use the appropriate
+        one. Note the XML::Simple is used to parse XML files.
 
-           The currently supported file formats are YAML, JSON and XML. The
-           format is determined by the file extension, so use the appropriate
-           one. Note the XML::Simple is used to parse XML files.
+    include_path($template_directories) -- Default is undef
+        This method allows you to specify the directories that are searched
+        to find templates. You can specify this as a string containing a
+        single directory, an array ref of strings containing directory
+        names, or as a string containing multiple directories separated by
+        ':'.
 
-       data($file_name || $hash)
-           Most templates use a hash object of data to access values while
-           rendering. You can specify this data in a file or with a hash
-           reference.
+    path() -- Default is undef
+        This is a shorter name for "include_path". It does the exact same
+        thing.
 
-           The currently supported file formats are YAML, JSON and XML. The
-           format is determined by the file extension, so use the appropriate
-           one. Note the XML::Simple is used to parse XML files.
+    start_tag() -- Default is '[%'
+    end_tag() -- Default is '%]'
+    tag_style() -- Default is 'template'
+    pre_chomp() -- Default is 0
+    post_chomp() -- Default is 0
+    trim() -- Default is 0
+    interpolate() -- Default is 0
+    anycase() -- Default is 0
+    delimiter() -- Default is ':'
+    absolute() -- Default is 0
+    relative() -- Default is 0
+    default() -- Default is undef
+    blocks() -- Default is undef
+    auto_reset() -- Default is 1
+    recursion() -- Default is 0
+    eval_perl() -- Default is 0
+    pre_process() -- Default is undef
+    post_process() -- Default is undef
+    process_template() -- Default is undef
+        This is a proxy to the Template Toolkit PROCESS option. The
+        "process" method is used to actually process a template.
 
-       include_path($template_directories) ‐‐ Default is undef
-           This method allows you to specify the directories that are searched
-           to find templates. You can specify this as a string containing a
-           single directory, an array ref of strings containing directory
-           names, or as a string containing multiple directories separated by
-           ’:’.
+    error_template() -- Default is undef
+        This is a proxy to the Template Toolkit ERROR option. The "error()"
+        method returns the error message on a failure.
 
-       _p_a_t_h_(_) ‐‐ Default is undef
-           This is a shorter name for "include_path". It does the exact same
-           thing.
+    debug() -- Default is 0
+    cache_size() -- Default is undef
+    compile_ext() -- Default is undef
+    compile_dir() -- Default is undef
 
-       _s_t_a_r_t___t_a_g_(_) ‐‐ Default is ’[%’
-       _e_n_d___t_a_g_(_) ‐‐ Default is ’%]’
-       _t_a_g___s_t_y_l_e_(_) ‐‐ Default is ’template’
-       _p_r_e___c_h_o_m_p_(_) ‐‐ Default is 0
-       _p_o_s_t___c_h_o_m_p_(_) ‐‐ Default is 0
-       _t_r_i_m_(_) ‐‐ Default is 0
-       _i_n_t_e_r_p_o_l_a_t_e_(_) ‐‐ Default is 0
-       _a_n_y_c_a_s_e_(_) ‐‐ Default is 0
-       _d_e_l_i_m_i_t_e_r_(_) ‐‐ Default is ’:’
-       _a_b_s_o_l_u_t_e_(_) ‐‐ Default is 0
-       _r_e_l_a_t_i_v_e_(_) ‐‐ Default is 0
-       _d_e_f_a_u_l_t_(_) ‐‐ Default is undef
-       _b_l_o_c_k_s_(_) ‐‐ Default is undef
-       _a_u_t_o___r_e_s_e_t_(_) ‐‐ Default is 1
-       _r_e_c_u_r_s_i_o_n_(_) ‐‐ Default is 0
-       _e_v_a_l___p_e_r_l_(_) ‐‐ Default is 0
-       _p_r_e___p_r_o_c_e_s_s_(_) ‐‐ Default is undef
-       _p_o_s_t___p_r_o_c_e_s_s_(_) ‐‐ Default is undef
-       _p_r_o_c_e_s_s___t_e_m_p_l_a_t_e_(_) ‐‐ Default is undef
-           This is a proxy to the Template Toolkit PROCESS option. The
-           "process" method is used to actually process a template.
+AUTHOR
+    Ingy d�t Net <ingy@cpan.org>
 
-       _e_r_r_o_r___t_e_m_p_l_a_t_e_(_) ‐‐ Default is undef
-           This is a proxy to the Template Toolkit ERROR option. The "error()"
-           method returns the error message on a failure.
+COPYRIGHT
+    Copyright (c) 2009. Ingy d�t Net.
 
-       _d_e_b_u_g_(_) ‐‐ Default is 0
-       _c_a_c_h_e___s_i_z_e_(_) ‐‐ Default is undef
-       _c_o_m_p_i_l_e___e_x_t_(_) ‐‐ Default is undef
-       _c_o_m_p_i_l_e___d_i_r_(_) ‐‐ Default is undef
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-AAUUTTHHOORR
-       Ingy doet Net <ingy@cpan.org>
+    See http://www.perl.com/perl/misc/Artistic.html
 
-CCOOPPYYRRIIGGHHTT
-       Copyright (c) 2009. Ingy doet Net.
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
 
-       This program is free software; you can redistribute it and/or modify it
-       under the same terms as Perl itself.
+    Around line 287:
+        Unterminated C<...> sequence
 
-       See http://www.perl.com/perl/misc/Artistic.html
-
-PPOODD EERRRROORRSS
-       Hey! TThhee aabboovvee ddooccuummeenntt hhaadd ssoommee ccooddiinngg eerrrroorrss,, wwhhiicchh aarree eexxppllaaiinneedd
-       bbeellooww::
-
-       Around line 295:
-           Unterminated C<...> sequence
-
-
-
-perl v5.10.0                      2009‐04‐27      Template::Toolkit::Simple(3)

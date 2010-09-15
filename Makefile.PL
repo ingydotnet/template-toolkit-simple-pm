@@ -1,14 +1,11 @@
 use inc::Module::Install;
 
-name            'Template-Toolkit-Simple';
-author          'Ingy döt Net';
-abstract        'A Simple Interface to Template Toolkit';
-version         '0.01';
-license         'perl';
-perl_version    '5.008003';
+all_from 'lib/Template/Toolkit/Simple.pm';
+readme_from;
+manifest_skip;
 
-requires        'Template' => '0';
-
-install_script  'bin/tt-render';
+requires 'Template' => '0';
+install_script 'bin/tt-render';
+use_test_base;
 
 WriteAll;
