@@ -2,6 +2,7 @@ package Template::Toolkit::Simple;
 use Template::Constants qw( :debug );
 use strict;
 use warnings;
+use 5.008003;
 
 our $VERSION = '0.07';
 
@@ -284,7 +285,7 @@ an error occurs, it is printed to STDERR.
 
 =head1 TEMPLATE NAME
 
-When using Template::Toolkit::Simple or C<tt-render), the most common
+When using Template::Toolkit::Simple or C<tt-render>, the most common
 parameters you will use are the main template file name and the
 directory of supporting templates. As a convenience, you can specify
 these together.
