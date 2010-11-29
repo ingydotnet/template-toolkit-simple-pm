@@ -1,4 +1,5 @@
-use TestML -run;
+use TestML -run,
+    -require_or_skip => 'YAML::XS';
 
 sub run_command {
     my $command = shift->value;

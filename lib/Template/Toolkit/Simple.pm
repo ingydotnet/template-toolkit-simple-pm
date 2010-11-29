@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008003;
 
-our $VERSION = '0.08';
+our $VERSION = '0.10';
 
 use Template;
 use Getopt::Long;
