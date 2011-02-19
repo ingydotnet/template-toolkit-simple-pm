@@ -1,9 +1,11 @@
 ---
 version: 0.11
+author: Anthony Cornehl <accornehl@gmail.com>
 date:    Fri Feb 18 17:46:00 PST 2011
 change:
 - Added support for JSON and XML
 - Added tests for JSON and XML
+- Update Documentation for README Simple.pm
 ---
 version: 0.10
 date:    Mon Nov 29 09:58:35 EST 2010

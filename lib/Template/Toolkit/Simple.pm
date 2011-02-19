@@ -342,7 +342,7 @@ the template result as a string. It returns undef if an error occurs.
 
 The C<$data> field is optional and can be set with the C<data> method.
 
-If you need more control, see the process comand below:
+If you need more control, see the process command below:
 
 =item process($template, $data, $output, %options);
 
@@ -392,7 +392,8 @@ appropriate options.
 
 The currently supported file formats are YAML, JSON and XML. The format
 is determined by the file extension, so use the appropriate one. Note
-the XML::Simple is used to parse XML files.
+that XML::Simple is used to parse XML files and JSON::XS is used to 
+parse JSON files.
 
 =item data($file_name || $hash)
 
@@ -472,6 +473,21 @@ method returns the error message on a failure.
 =back
 
 =encoding utf8
+
+=head1 NOTES
+
+Loading files requires that additional modules be installed on the 
+system, but are not required to build or install this module.
+
+=over
+
+=item YAML files require YAML::XS
+
+=item JSON files require JSON::XS
+
+=item XML files require XML::Simple
+
+=back
 
 =head1 AUTHOR
 

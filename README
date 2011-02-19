@@ -77,7 +77,7 @@ METHODS
 
         The $data field is optional and can be set with the "data" method.
 
-        If you need more control, see the process comand below:
+        If you need more control, see the process command below:
 
     process($template, $data, $output, %options);
         This command is simply a proxy to the Template Toolkit "process"
@@ -119,7 +119,8 @@ OPTION METHODS
 
         The currently supported file formats are YAML, JSON and XML. The
         format is determined by the file extension, so use the appropriate
-        one. Note the XML::Simple is used to parse XML files.
+        one. Note that XML::Simple is used to parse XML files and JSON::XS
+        is used to parse JSON files.
 
     data($file_name || $hash)
         Most templates use a hash object of data to access values while
@@ -171,6 +172,14 @@ OPTION METHODS
     cache_size() -- Default is undef
     compile_ext() -- Default is undef
     compile_dir() -- Default is undef
+
+NOTES
+    Loading files requires that additional modules be installed on the
+    system, but are not required to build or install this module.
+
+    YAML files require YAML::XS
+    JSON files require JSON::XS
+    XML files require XML::Simple
 
 AUTHOR
     Ingy döt Net <ingy@cpan.org>
