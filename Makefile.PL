@@ -9,6 +9,8 @@ repository 'git://github.com/ingydotnet/template-toolkit-simple-pm.git';
 
 requires 'Template' => '0';
 recommends 'YAML::XS';
+recommends 'XML::Simple';
+recommends 'JSON::XS;
 
 install_script 'bin/tt-render';
 use_testml;

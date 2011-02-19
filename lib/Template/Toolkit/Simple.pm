@@ -202,11 +202,16 @@ sub _load_yaml {
 }
 
 sub _load_json {
-    die '...';
+    my $self = shift;
+    require JSON::XS;
+    my $json = do { local $/; open my $json, '<', shift; <$json> };
+    JSON::XS::decode_json($json);
 }
 
 sub _load_xml {
-    die '...';
+    my $self = shift;
+    require XML::Simple;
+    XML::Simple::XMLin(shift);
 }
 
 sub _run_command {
