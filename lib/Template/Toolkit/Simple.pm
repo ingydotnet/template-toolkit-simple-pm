@@ -4,10 +4,11 @@ use strict;
 use warnings;
 use 5.008003;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 use Template;
 use Getopt::Long;
+use Encode;
 
 use base 'Exporter';
 our @EXPORT = qw(tt);

@@ -1,4 +1,9 @@
 ---
+version: 0.12
+date:    Sun May 15 12:46:44 EST 2011
+changes:
+- Forgot to 'use Encode'. doh!
+---
 version: 0.11
 date:    Sun May 15 12:11:50 EST 2011
 changes:
