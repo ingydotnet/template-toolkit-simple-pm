@@ -21,11 +21,11 @@ wanted = *wanted;
 
 === Want this output
 --- wanted
-Hi Lover,
+Hi Löver,
 
 Have a nice day.
 
-Smooches, Ingy
+Smööches, Ingy
 
 === Render
 --- command

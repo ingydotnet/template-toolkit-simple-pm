@@ -22,8 +22,8 @@ Plan = 1;
 === Simple Render
 --- template: letter.tt
 --- result
-Hi Lover,
+Hi Löver,
 
 Have a nice day.
 
-Smooches, Ingy
+Smööches, Ingy
