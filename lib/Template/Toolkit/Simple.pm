@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008003;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 use Template;
 use Getopt::Long;
@@ -21,6 +21,7 @@ my $default = {
     config => undef,
     output => undef,
 
+    encoding => 'utf8',
     include_path => undef,
     eval_perl => 0,
     start_tag => quotemeta('[' . '%'),
@@ -109,7 +110,7 @@ sub render {
     my $output = '';
     $self->process($template, $self->{data}, \$output)
         or $self->croak;
-    return $output;
+    return Encode::encode_utf8($output);
 }
 
 sub usage {
@@ -134,6 +135,7 @@ sub process {
     my $self = shift;
 
     $self->{tt} = Template->new(
+        ENCODING            => $self->{encoding},
         INCLUDE_PATH        => $self->{include_path},
         EVAL_PERL           => $self->{eval_perl},
         START_TAG           => $self->{start_tag},
@@ -242,6 +244,8 @@ sub _run_command {
 
 1;
 
+=encoding utf8
+
 =head1 NAME
 
 Template::Toolkit::Simple - A Simple Interface to Template Toolkit
@@ -300,8 +304,9 @@ is the same as:
     tt->include_path('foo/')->render('bar/baz.tt');
     > tt-render --include_path=foo/ bar/baz.tt  # command line version
 
-Use a double slash to separate the path from the template. This is handy
-because tab completion should work after you specify the '//'.
+Just use a double slash to separate the path from the template. This is extra
+handy on the command line, because (at least in Bash) tab completion still
+works after you specify the '//'.
 
 =head1 EXPORTED SUBROUTINES
 
@@ -464,9 +469,9 @@ method returns the error message on a failure.
 
 =item compile_dir() -- Default is undef
 
-=back
+=item encoding() -- Default is 'utf8'
 
-=encoding utf8
+=back
 
 =head1 AUTHOR
 
@@ -474,7 +479,7 @@ Ingy döt Net <ingy@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2008, 2009, 2010. Ingy döt Net.
+Copyright (c) 2008, 2009, 2010, 2011. Ingy döt Net.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
