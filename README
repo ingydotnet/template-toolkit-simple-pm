@@ -35,7 +35,7 @@ COMMAND LINE USAGE
 
         tt-render [template-options] file-name
 
-TEMPLATE NAME
+TEMPLATE PATH
     When using Template::Toolkit::Simple or "tt-render", the most common
     parameters you will use are the main template file name and the
     directory of supporting templates. As a convenience, you can specify
@@ -177,7 +177,7 @@ OPTION METHODS
 AUTHOR
     Ingy döt Net <ingy@cpan.org>
 
-COPYRIGHT
+COPYRIGHT AND LICENSE
     Copyright (c) 2008, 2009, 2010, 2011. Ingy döt Net.
 
     This program is free software; you can redistribute it and/or modify it
