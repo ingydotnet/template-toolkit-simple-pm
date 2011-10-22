@@ -1,4 +1,10 @@
 ---
+version: 0.14
+date:    Fri Oct 21 18:31:56 PDT 2011
+changes:
+- Use Module::Package
+- Add strict support
+---
 version: 0.13
 date:    Sun May 15 17:08:56 EST 2011
 changes:

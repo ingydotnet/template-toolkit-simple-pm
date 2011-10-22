@@ -1,4 +1,1 @@
-use inc::Module::Install; pkg;
-
-requires 'Template' => '0';
-recommends 'YAML::XS';
+use inc::Module::Package 'Ingy:modern 0.17';

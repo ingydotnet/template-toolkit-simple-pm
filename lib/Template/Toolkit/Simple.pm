@@ -5,17 +5,21 @@
 # copyright: 2008, 2009, 2010, 2011
 # license:   perl
 
-package Template::Toolkit::Simple;
-use Template::Constants qw( :debug );
 use strict;
 use warnings;
 use 5.008003;
+use Template 2.22 ();
+use YAML::XS 0.37 ();
 
-our $VERSION = '0.13';
+package Template::Toolkit::Simple;
 
-use Template;
-use Getopt::Long;
+our $VERSION = '0.14';
+
 use Encode;
+use Getopt::Long;
+use Template;
+use Template::Constants qw( :debug );
+use YAML::XS;
 
 use base 'Exporter';
 our @EXPORT = qw(tt);
@@ -43,6 +47,7 @@ my $default = {
     delimiter => ':',
     absolute => 0,
     relative => 0,
+    strict => 0,
     default => undef,
     blocks => undef,
     auto_reset => 1,
@@ -138,7 +143,6 @@ sub croak {
     Carp::croak($error . "\n");
 };
 
-
 sub process {
     my $self = shift;
 
@@ -155,7 +159,7 @@ sub process {
         ANYCASE             => $self->{anycase},
         DELIMITER           => $self->{delimiter},
         ABSOLUTE            => $self->{absolute},
-        RELATIVE            => $self->{relative},
+        STRICT              => $self->{strict},
         DEFAULT             => $self->{default},
         BLOCKS              => $self->{blocks},
         AUTO_RESET          => $self->{auto_reset},
@@ -207,16 +211,15 @@ sub _file_to_hash {
 
 sub _load_yaml {
     my $self = shift;
-    require YAML::XS;
     YAML::XS::LoadFile(shift);
 }
 
 sub _load_json {
-    die '...';
+    die 'JSON not actually supported yet';
 }
 
 sub _load_xml {
-    die '...';
+    die 'XML not actually supported yet';
 }
 
 sub _run_command {
@@ -251,8 +254,6 @@ sub _run_command {
 }
 
 1;
-
-=encoding utf8
 
 =head1 SYNOPSIS
 
@@ -440,6 +441,8 @@ same thing.
 =item absolute() -- Default is 0
 
 =item relative() -- Default is 0
+
+=item strict() -- Default is 0
 
 =item default() -- Default is undef
 

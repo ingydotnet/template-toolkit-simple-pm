@@ -153,6 +153,7 @@ OPTION METHODS
     delimiter() -- Default is ':'
     absolute() -- Default is 0
     relative() -- Default is 0
+    strict() -- Default is 0
     default() -- Default is undef
     blocks() -- Default is undef
     auto_reset() -- Default is 1
