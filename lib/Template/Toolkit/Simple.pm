@@ -215,11 +215,16 @@ sub _load_yaml {
 }
 
 sub _load_json {
-    die 'JSON not actually supported yet';
+    my $self = shift;
+    require JSON::XS;
+    my $json = do { local $/; open my $json, '<', shift; <$json> };
+    JSON::XS::decode_json($json);
 }
 
 sub _load_xml {
-    die 'XML not actually supported yet';
+    my $self = shift;
+    require XML::Simple;
+    XML::Simple::XMLin(shift);
 }
 
 sub _run_command {
@@ -347,7 +352,7 @@ the template result as a string. It returns undef if an error occurs.
 
 The C<$data> field is optional and can be set with the C<data> method.
 
-If you need more control, see the process comand below:
+If you need more control, see the process command below:
 
 =item process($template, $data, $output, %options);
 
@@ -397,7 +402,8 @@ appropriate options.
 
 The currently supported file formats are YAML, JSON and XML. The format
 is determined by the file extension, so use the appropriate one. Note
-the XML::Simple is used to parse XML files.
+that XML::Simple is used to parse XML files and JSON::XS is used to 
+parse JSON files.
 
 =item data($file_name || $hash)
 
