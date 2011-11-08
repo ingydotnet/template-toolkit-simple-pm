@@ -1,4 +1,9 @@
 ---
+version: 0.16
+date:    Mon Nov  7 18:49:56 PST 2011
+changes:
+- Anthony Cornehl++ implemented JSON and XML support. \o/
+---
 version: 0.15
 date:    Sat Nov  5 01:09:40 PDT 2011
 changes:

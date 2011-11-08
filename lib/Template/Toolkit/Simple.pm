@@ -13,7 +13,7 @@ use YAML::XS 0.37 ();
 
 package Template::Toolkit::Simple;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 use Encode;
 use Getopt::Long;
