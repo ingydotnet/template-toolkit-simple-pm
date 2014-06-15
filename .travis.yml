@@ -1,0 +1,30 @@
+language: perl
+
+perl:
+- '5.18'
+- '5.16'
+- '5.14'
+- '5.12'
+- '5.10'
+- '5.8'
+
+install:
+- git clone --depth=1
+  git://github.com/ingydotnet/testml-pm ../testml-pm
+- git clone --depth=1
+  git://github.com/ingydotnet/pegex-pm ../pegex-pm
+- cpanm --quiet --notest
+  Devel::Cover::Report::Coveralls
+  JSON::XS
+  Template
+  XML::Simple
+  YAML::XS
+
+script:
+- PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine
+  prove -lv test/
+- cover
+
+after_success:
+- cover -report coveralls
+

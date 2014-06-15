@@ -1,0 +1,37 @@
+=meta: 0.0.1
+
+name: Template-Toolkit-Simple
+version: 0.17
+abstract: A Simple Interface to Template Toolkit
+homepage: https://metacpan.org/release/Template-Toolkit-Simple
+
+license: perl
+copyright: 2008-2014. Ingy döt Net.
+author:
+  name: Ingy döt net
+  email: ingy@cpan.org
+  github: ingydotnet
+  twitter: ingydotnet
+  freenode: ingy
+  homepage: http://ingy.net
+
+requires:
+  perl: 5.8.1
+  Template: 2.22
+  YAML::XS: 0.37
+
+recommends:
+  JSON::XS: 0
+  XML::Simple: 0
+
+devel:
+  git: git@github.org/ingydotnet/template-toolkit-simple-pm
+  irc: irc.perl.org/tt
+  bug: https://github.com/ingydotnet/template-toolkit-simple-pm/issues/
+
+=cpan:
+  include_testml: 1
+
+=travis:
+  type: perl
+  testml: yes
