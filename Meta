@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Template-Toolkit-Simple
-version: 0.17
+version: 0.18
 abstract: A Simple Interface to Template Toolkit
 homepage: https://metacpan.org/release/Template-Toolkit-Simple
 
@@ -34,4 +34,6 @@ devel:
 
 =travis:
   type: perl
-  testml: yes
+  test:
+    requires:
+      TestML: 0
