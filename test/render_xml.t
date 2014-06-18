@@ -1,3 +1,5 @@
+use lib 'inc';
+
 {
     use Test::More;
     eval "use XML::Simple; 1" or

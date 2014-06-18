@@ -1,4 +1,9 @@
 ---
+version: 0.19
+date:    Wed Jun 18 11:23:29 PDT 2014
+changes:
+- Tests using TestML needed 'inc'
+---
 version: 0.18
 date:    Mon Jun 16 15:46:07 PDT 2014
 changes:

@@ -1,3 +1,5 @@
+use lib 'inc';
+
 {
     use Test::More;
     eval "use JSON::XS; 1" or
