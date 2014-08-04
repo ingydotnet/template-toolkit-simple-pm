@@ -1,4 +1,11 @@
 ---
+version: 0.20
+date:    Mon Aug  4 00:35:28 PDT 2014
+changes:
+- Remove (c) from Copyright
+- Move doc to swim
+- Fix Meta and add Contributing
+---
 version: 0.19
 date:    Wed Jun 18 11:23:29 PDT 2014
 changes:

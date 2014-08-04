@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Template-Toolkit-Simple
-version: 0.19
+version: 0.20
 abstract: A Simple Interface to Template Toolkit
 homepage: https://metacpan.org/release/Template-Toolkit-Simple
 
@@ -25,9 +25,9 @@ recommends:
   XML::Simple: 0
 
 devel:
-  git: git@github.org/ingydotnet/template-toolkit-simple-pm
-  irc: irc.perl.org/tt
-  bug: https://github.com/ingydotnet/template-toolkit-simple-pm/issues/
+  git: https://github.com/ingydotnet/template-toolkit-simple-pm
+  bug: https://github.com/ingydotnet/template-toolkit-simple-pm/issues
+  irc: irc.perl.org#tt
 
 =cpan:
   include_testml: 1
