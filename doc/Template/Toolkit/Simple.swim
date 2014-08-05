@@ -3,6 +3,8 @@ Template::Toolkit::Simple
 
 A Simple Interface to Template Toolkit
 
+<badge travis coveralls ingydotnet/template-toolkit-simple-pm>
+
 = Synopsis
 
     use Template::Toolkit::Simple;

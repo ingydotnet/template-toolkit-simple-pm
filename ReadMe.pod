@@ -10,6 +10,10 @@ See http://github.com/ingydotnet/swim-pm#readme
 
 Template::Toolkit::Simple - A Simple Interface to Template Toolkit
 
+=for html
+<a href="https://travis-ci.org/ingydotnet/template-toolkit-simple-pm"><img src="https://travis-ci.org/ingydotnet/template-toolkit-simple-pm.png" alt="template-toolkit-simple-pm"></a>
+<a href="https://coveralls.io/r/ingydotnet/template-toolkit-simple-pm?branch=master"><img src="https://coveralls.io/repos/ingydotnet/template-toolkit-simple-pm/badge.png" alt="template-toolkit-simple-pm"></a>
+
 =head1 SYNOPSIS
 
       use Template::Toolkit::Simple;
