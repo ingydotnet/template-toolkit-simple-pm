@@ -1,4 +1,9 @@
 ---
+version: 0.22
+date:    Tue Aug  5 11:23:13 PDT 2014
+changes:
+- Change IRC channel to irc.freenode.net#pkg
+---
 version: 0.21
 date:    Tue Aug  5 10:14:59 PDT 2014
 changes:

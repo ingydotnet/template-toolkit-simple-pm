@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Template-Toolkit-Simple
-version: 0.21
+version: 0.22
 abstract: A Simple Interface to Template Toolkit
 homepage: https://metacpan.org/release/Template-Toolkit-Simple
 
@@ -27,13 +27,14 @@ recommends:
 devel:
   git: https://github.com/ingydotnet/template-toolkit-simple-pm
   bug: https://github.com/ingydotnet/template-toolkit-simple-pm/issues
-  irc: irc.perl.org#tt
+  irc: irc.freenode.net#pkg
 
 =cpan:
   include_testml: 1
 
 =travis:
   type: perl
+  irc: irc.freenode.net#pkg
   test:
     requires:
       TestML: 0
