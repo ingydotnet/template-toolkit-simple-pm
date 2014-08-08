@@ -1,6 +1,6 @@
 use strict; use warnings;
 package Template::Toolkit::Simple;
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 use Encode;
 use Getopt::Long;
