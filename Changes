@@ -1,4 +1,9 @@
 ---
+version: 0.24
+date:    Fri Aug  8 19:03:02 PDT 2014
+changes:
+- Fix bug of using a bad TestMLIncluder.
+---
 version: 0.23
 date:    Fri Aug  8 12:58:46 PDT 2014
 changes:
