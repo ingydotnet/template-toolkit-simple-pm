@@ -21,11 +21,11 @@ TestML->new(
 
     sub render_template {
         my ($self, $context) = @_;
-        my $testdir = -d 'test' ? 'test' : 't';
+        my $t = -d 't' ? 't' : 'test';
         return str tt
             ->post_chomp
-            ->path("$testdir/template")
-            ->data("$testdir/render.json")
+            ->path("$t/template")
+            ->data("$t/render.json")
             ->render($context->value);
     }
 }
