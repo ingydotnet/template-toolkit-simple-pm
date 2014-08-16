@@ -1,7 +1,7 @@
 =meta: 0.0.2
 
 name: Template-Toolkit-Simple
-version: 0.28
+version: 0.29
 abstract: A Simple Interface to Template Toolkit
 homepage: https://metacpan.org/release/Template-Toolkit-Simple
 language: perl
@@ -32,8 +32,3 @@ recommends:
 
 =zild:
   include_testml: 1
-
-=travis:
-  test:
-    requires:
-      TestML: 0

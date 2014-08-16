@@ -21,9 +21,9 @@ install:
   Devel::Cover::Report::Coveralls
   JSON::XS
   Template
-  TestML
   XML::Simple
   YAML::XS
+  TestML
 
 script:
 - PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine
