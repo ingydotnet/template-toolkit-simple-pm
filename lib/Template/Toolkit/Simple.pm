@@ -1,6 +1,6 @@
 use strict; use warnings;
 package Template::Toolkit::Simple;
-our $VERSION = '0.26';
+our $VERSION = '0.27';
 
 use Encode;
 use Getopt::Long;
@@ -242,7 +242,7 @@ sub _run_command {
         } keys %$default
     );
 
-    print STDOUT $self->render($template); 
+    print STDOUT $self->render($template);
 }
 
 1;
