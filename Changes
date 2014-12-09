@@ -1,4 +1,9 @@
 ---
+version: 0.31
+date:    Tue Dec  9 08:39:08 PST 2014
+changes:
+- Remove "use lib 'lib';". GitHub Issue #3.
+---
 version: 0.30
 date:    Sat Aug 16 16:47:08 PDT 2014
 changes:
