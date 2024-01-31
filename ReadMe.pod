@@ -264,6 +264,11 @@ Default is 0
 Default is 0
 
 
+=item C<expose_blocks()>
+
+Default is 0
+
+
 =item C<pre_process()>
 
 Default is undef

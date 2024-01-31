@@ -192,6 +192,8 @@ If the method functionality is not explained below, please refer to
 
 - `eval_perl()` :: Default is 0
 
+- `expose_blocks()` :: Default is 0
+
 - `pre_process()` :: Default is undef
 
 - `post_process()` :: Default is undef
